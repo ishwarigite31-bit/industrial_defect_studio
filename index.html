@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Industrial Defect Studio</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="logo">ID<span>.</span></div>
+
+    <div>
+      <h1>Industrial Defect Studio</h1>
+      <p>SYNTHETIC SURFACE DEFECT GENERATION</p>
+    </div>
+
+    <span class="status">● LOCAL DEMO</span>
+  </header>
+
+  <main>
+
+    <section class="intro">
+      <p class="eyebrow">COMPUTER VISION / QUALITY CONTROL</p>
+
+      <h2>
+        Inspect. Simulate.
+        <span>Improve.</span>
+      </h2>
+
+      <p>
+        Upload an industrial product image and generate
+        simulated defect variations.
+      </p>
+    </section>
+
+    <section class="workspace">
+
+      <!-- INPUT PANEL -->
+      <aside class="panel controls">
+
+        <h3><span>01.</span> Input image</h3>
+
+        <label class="upload-zone" for="imageInput">
+          <span class="upload-icon">↑</span>
+          <strong>Choose product image</strong>
+          <small>PNG, JPG, WEBP</small>
+          <span class="browse">Browse files</span>
+        </label>
+
+        <input
+          id="imageInput"
+          type="file"
+          accept="image/png,image/jpeg,image/webp"
+        >
+
+        <p id="fileInfo" class="file-info">
+          No image selected
+        </p>
+
+        <div class="input-preview-wrap" id="previewWrap" hidden>
+          <img id="inputPreview" alt="Uploaded product preview">
+        </div>
+
+        <label class="field-label" for="defectType">
+          Defect type
+        </label>
+
+        <select id="defectType">
+          <option value="scratches">Surface scratches</option>
+          <option value="spots">Dark spots / stains</option>
+          <option value="cracks">Fine cracks</option>
+          <option value="mixed">Mixed defects</option>
+        </select>
+
+        <div class="range-label">
+          <label class="field-label" for="intensity">
+            Defect intensity
+          </label>
+
+          <b id="intensityValue">60%</b>
+        </div>
+
+        <input
+          id="intensity"
+          type="range"
+          min="10"
+          max="90"
+          value="60"
+        >
+
+        <label class="field-label" for="variationCount">
+          Number of variations
+        </label>
+
+        <select id="variationCount">
+          <option value="1">1 image</option>
+          <option value="2">2 images</option>
+          <option value="4" selected>4 images</option>
+          <option value="6">6 images</option>
+        </select>
+
+        <button id="generateBtn" class="primary" type="button">
+          ✦ Generate defects
+        </button>
+
+        <button id="resetBtn" class="secondary reset" type="button">
+          Reset results
+        </button>
+
+        <p class="notice">
+          Demo uses simulated visual defects, not a trained GAN.
+        </p>
+
+      </aside>
+
+      <!-- OUTPUT PANEL -->
+      <section class="panel results">
+
+        <div class="results-header">
+          <div>
+            <h3><span>02.</span> Generated results</h3>
+            <p id="resultInfo">
+              Upload an image to get started.
+            </p>
+          </div>
+
+          <button
+            id="downloadAll"
+            class="secondary"
+            type="button"
+            disabled
+          >
+            ↓ Download all
+          </button>
+        </div>
+
+        <div
+          id="message"
+          class="message"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">＋</div>
+
+          <h4>Your results will appear here</h4>
+
+          <p>
+            Choose a product image, select defect settings,
+            and click Generate defects.
+          </p>
+        </div>
+
+        <div id="resultsGrid" class="results-grid"></div>
+
+      </section>
+
+    </section>
+
+    <footer>
+      Industrial Defect Studio · HTML · CSS · JavaScript
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
